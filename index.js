@@ -42,7 +42,7 @@ app.post("/login", function(req, res) {
 });
 
 app.post("/me", function(req, res){
-	jwt.verify(req.body.token, publicKey, function(err, decoded) {
+	jwt.verify(req.body.token, publicKey, { algorithms: ['RS256'] }, function(err, decoded) {
 	  console.log(decoded);
 	  res.send([err,decoded]);
 	});
